@@ -8,6 +8,7 @@ import Link from "next/link";
 import Form from "./form";
 import Outbrain from "@/components/outbrain";
 import Taboola from "@/components/taboola";
+import React from "react";
 
 type Params = { params: { articleTitle: string } };
 
@@ -84,16 +85,175 @@ const Page = ({ params: { articleTitle } }: Params) => {
         <div className="mt-12 w-full max-w-[800px] mx-auto grid grid-cols-1 gap-12">
           <Share articleTitle={articleTitle} />
           {article.contents.map((content, index) => (
-            <p
-              key={index}
-              style={{ lineHeight: "200%" }}
-              className={`text-lg md:text-xl text-neutral-700 ${
-                content.startsWith("***") ? "font-bold" : ""
-              }`}
-            >
-              {content.startsWith("***") ? content.slice(3) : content}
-            </p>
-          ))}
+  <React.Fragment key={index}>
+    <p
+      style={{ lineHeight: "200%" }}
+      className={`text-lg md:text-xl text-neutral-700 ${
+        content.startsWith("***") ? "font-bold" : ""
+      }`}
+    >
+      {content.startsWith("***") ? content.slice(3) : content}
+    </p>
+
+    {index === 0 && (
+  <div className="p-5 rounded-xl hover:bg-purple-100  bg-purple-50">
+    <div className="flex flex-col sm:flex-row items-center gap-4">
+      {articles
+        .filter((post) => post.title !== article.title)
+        .slice(4, 5)
+        .map((item, index) => (
+          <Link
+            key={index}
+            href={`/${item.title.replace(/[^A-Za-z0-9]+/g, "-")}`}
+            className="flex items-center gap-4 w-full  transition rounded-lg p-2"
+          >
+            <Image
+              src={`/articleassets/${article.imgUrl}`}
+              alt={item.title}
+              width={120}
+              height={80}
+              className="rounded-md object-cover w-[140px] h-[110px] shrink-0"
+            />
+            <div className="text-left">
+              <p className="text-md lg:-mt-12 text-gray-500 mb-1">Don't Miss This!</p>
+              <p className="text-lg lg:mt-4 line-clamp-1 text-gray-800 font-semibold">
+                {item.title}
+              </p>
+            </div>
+          </Link>
+        ))}
+    </div>
+  </div>
+)}
+
+
+{index === 4 && (
+  <div className="p-5 rounded-xl hover:bg-purple-100  bg-purple-50">
+    <div className="flex flex-col sm:flex-row items-center gap-4">
+      {articles
+        .filter((post) => post.title !== article.title)
+        .slice(7, 8)
+        .map((item, index) => (
+          <Link
+            key={index}
+            href={`/${item.title.replace(/[^A-Za-z0-9]+/g, "-")}`}
+            className="flex items-center gap-4 w-full  transition rounded-lg p-2"
+          >
+            <Image
+              src={`/articleassets/${article.imgUrl}`}
+              alt={item.title}
+              width={120}
+              height={80}
+              className="rounded-md object-cover w-[140px] h-[110px] shrink-0"
+            />
+            <div className="text-left">
+              <p className="text-md lg:-mt-12 text-gray-500 mb-1">You Might Also Like</p>
+              <p className="text-lg lg:mt-4 line-clamp-1 text-gray-800 font-semibold">
+                {item.title}
+              </p>
+            </div>
+          </Link>
+        ))}
+    </div>
+  </div>
+)}
+
+
+{index === 9 && (
+  <div className="p-5 rounded-xl hover:bg-purple-100  bg-purple-50">
+    <div className="flex flex-col sm:flex-row items-center gap-4">
+      {articles
+        .filter((post) => post.title !== article.title)
+        .slice(10, 11)
+        .map((item, index) => (
+          <Link
+            key={index}
+            href={`/${item.title.replace(/[^A-Za-z0-9]+/g, "-")}`}
+            className="flex items-center gap-4 w-full  transition rounded-lg p-2"
+          >
+            <Image
+              src={`/articleassets/${article.imgUrl}`}
+              alt={item.title}
+              width={120}
+              height={80}
+              className="rounded-md object-cover w-[140px] h-[110px] shrink-0"
+            />
+            <div className="text-left">
+              <p className="text-md lg:-mt-12 text-gray-500 mb-1">More from Our Blog</p>
+              <p className="text-lg lg:mt-4 line-clamp-1 text-gray-800 font-semibold">
+                {item.title}
+              </p>
+            </div>
+          </Link>
+        ))}
+    </div>
+  </div>
+)}
+
+{index === 14 && (
+  <div className="p-5 rounded-xl hover:bg-purple-100  bg-purple-50">
+    <div className="flex flex-col sm:flex-row items-center gap-4">
+      {articles
+        .filter((post) => post.title !== article.title)
+        .slice(14, 15)
+        .map((item, index) => (
+          <Link
+            key={index}
+            href={`/${item.title.replace(/[^A-Za-z0-9]+/g, "-")}`}
+            className="flex items-center gap-4 w-full  transition rounded-lg p-2"
+          >
+            <Image
+              src={`/articleassets/${article.imgUrl}`}
+              alt={item.title}
+              width={120}
+              height={80}
+              className="rounded-md object-cover w-[140px] h-[110px] shrink-0"
+            />
+            <div className="text-left">
+              <p className="text-md lg:-mt-12 text-gray-500 mb-1">From the Archives</p>
+              <p className="text-lg lg:mt-4 line-clamp-1 text-gray-800 font-semibold">
+                {item.title}
+              </p>
+            </div>
+          </Link>
+        ))}
+    </div>
+  </div>
+)}
+
+{index === 19 && (
+  <div className="p-5 rounded-xl hover:bg-purple-100  bg-purple-50">
+    <div className="flex flex-col sm:flex-row items-center gap-4">
+      {articles
+        .filter((post) => post.title !== article.title)
+        .slice(20, 21)
+        .map((item, index) => (
+          <Link
+            key={index}
+            href={`/${item.title.replace(/[^A-Za-z0-9]+/g, "-")}`}
+            className="flex items-center gap-4 w-full  transition rounded-lg p-2"
+          >
+            <Image
+              src={`/articleassets/${article.imgUrl}`}
+              alt={item.title}
+              width={120}
+              height={80}
+              className="rounded-md object-cover w-[140px] h-[110px] shrink-0"
+            />
+            <div className="text-left">
+              <p className="text-md lg:-mt-12 text-gray-500 mb-1">Keep Reading</p>
+              <p className="text-lg lg:mt-4 line-clamp-1 text-gray-800 font-semibold">
+                {item.title}
+              </p>
+            </div>
+          </Link>
+        ))}
+    </div>
+  </div>
+)}
+  </React.Fragment>
+))}
+
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8 mt-12">
           <div className="col-span-full grid grid-cols-[auto_1fr] gap-6">
