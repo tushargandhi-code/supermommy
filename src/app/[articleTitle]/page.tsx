@@ -10,6 +10,17 @@ import Outbrain from "@/components/outbrain";
 import Taboola from "@/components/taboola";
 import React from "react";
 
+// Yeh function ek random image pick karta hai
+const getRandomImage = () => {
+  const randomNumber = Math.floor(Math.random() * 461) + 1; // 1 to 461
+  return `/articleassets/${randomNumber}.jpg`;
+};
+
+//image ko bhich ma rkhna ka liya index
+
+const middleIndex = Math.floor(articles[0].contents.length / 2);
+
+
 type Params = { params: { articleTitle: string } };
 
 export const generateStaticParams = () => {
@@ -108,7 +119,7 @@ const Page = ({ params: { articleTitle } }: Params) => {
             className="flex items-center gap-4 w-full  transition rounded-lg p-2"
           >
             <Image
-              src={`/articleassets/${article.imgUrl}`}
+              src={`/articleassets/${item.imgUrl}`}
               alt={item.title}
               width={120}
               height={80}
@@ -126,6 +137,18 @@ const Page = ({ params: { articleTitle } }: Params) => {
   </div>
 )}
 
+{index === middleIndex && (
+ <div className=" rounded-xl  flex justify-center">
+ <Image
+   src={getRandomImage()}
+   alt="Random Feature"
+   width={1000}  
+   height={600}  
+   className="rounded-xl object-cover w-full max-w-[1200px] h-[500px]"  
+ />
+</div>
+
+)}
 
 {index === 4 && (
   <div className="p-5 rounded-xl hover:bg-purple-100  bg-purple-50">
@@ -140,7 +163,7 @@ const Page = ({ params: { articleTitle } }: Params) => {
             className="flex items-center gap-4 w-full  transition rounded-lg p-2"
           >
             <Image
-              src={`/articleassets/${article.imgUrl}`}
+              src={`/articleassets/${item.imgUrl}`}
               alt={item.title}
               width={120}
               height={80}
@@ -172,7 +195,7 @@ const Page = ({ params: { articleTitle } }: Params) => {
             className="flex items-center gap-4 w-full  transition rounded-lg p-2"
           >
             <Image
-              src={`/articleassets/${article.imgUrl}`}
+              src={`/articleassets/${item.imgUrl}`}
               alt={item.title}
               width={120}
               height={80}
@@ -203,7 +226,7 @@ const Page = ({ params: { articleTitle } }: Params) => {
             className="flex items-center gap-4 w-full  transition rounded-lg p-2"
           >
             <Image
-              src={`/articleassets/${article.imgUrl}`}
+              src={`/articleassets/${item.imgUrl}`}
               alt={item.title}
               width={120}
               height={80}
@@ -234,7 +257,7 @@ const Page = ({ params: { articleTitle } }: Params) => {
             className="flex items-center gap-4 w-full  transition rounded-lg p-2"
           >
             <Image
-              src={`/articleassets/${article.imgUrl}`}
+              src={`/articleassets/${item.imgUrl}`}
               alt={item.title}
               width={120}
               height={80}
